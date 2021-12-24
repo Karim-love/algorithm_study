@@ -1,11 +1,31 @@
 package com.karim.algorithm;
 
-/**
- * Created by sblim
- * Date : 2021-12-23
- * Time : 오후 12:03
- */
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        int a;
+        String b;
+        int firstLine = 0, secondLine = 0, thirdLine = 0, result = 0;
+        Scanner scan = new Scanner(System.in);
+        a = scan.nextInt();
+        b = scan.next();
+
+        if (a > 99 && b.length() > 2 ){
+            firstLine = a * Integer.parseInt(String.valueOf(b.charAt(2)));
+            secondLine = a * Integer.parseInt(String.valueOf(b.charAt(1)));
+            thirdLine =  a * Integer.parseInt(String.valueOf(b.charAt(0)));
+
+            result = firstLine + (secondLine * 10) + (thirdLine * 100);
+        } else {
+            System.out.println("a , b 둘 다 3자리를 써주세요");
+        }
+
+        scan.close();
+
+        System.out.println(firstLine);
+        System.out.println(secondLine);
+        System.out.println(thirdLine);
+        System.out.println(result);
     }
 }
