@@ -13,10 +13,10 @@ public class Main {
 
         if (a > 99 && b.length() > 2 ){
             firstLine = a * Integer.parseInt(String.valueOf(b.charAt(2)));
-            secondLine = a * Integer.parseInt(String.valueOf(b.charAt(1)));
-            thirdLine =  a * Integer.parseInt(String.valueOf(b.charAt(0)));
+            secondLine = a * (b.charAt(1) -'0');
+            thirdLine =  a * (b.charAt(0) -'0');
 
-            result = firstLine + (secondLine * 10) + (thirdLine * 100);
+            result = a *  Integer.parseInt(b);
         } else {
             System.out.println("a , b 둘 다 3자리를 써주세요");
         }

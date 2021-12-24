@@ -144,6 +144,11 @@ public class Step1 {
 
     /**
      * NOTE : 빈 칸에 들어갈 수는?
+     * **************************
+     * char 값에서 -'0'을 해주면
+     * 굳이 `char -> string -> int` 과정 없이
+     * char 형태를 숫자형으로 쓸 수 있다 !!!
+     * () 가로 필수 !!
      */
     public void div3AB(){
         int a;
@@ -155,10 +160,10 @@ public class Step1 {
 
         if (a > 99 && b.length() > 2 ){
             firstLine = a * Integer.parseInt(String.valueOf(b.charAt(2)));
-            secondLine = a * Integer.parseInt(String.valueOf(b.charAt(1)));
-            thirdLine =  a * Integer.parseInt(String.valueOf(b.charAt(0)));
+            secondLine = a * (b.charAt(1) -'0');
+            thirdLine =  a * (b.charAt(0) -'0');
 
-            result = firstLine + (secondLine * 10) + (thirdLine * 100);
+            result = a *  Integer.parseInt(b);
         } else {
             System.out.println("a , b 둘 다 3자리를 써주세요");
         }
