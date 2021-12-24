@@ -12,11 +12,13 @@
 ## 1. BaekJoon 
 - 단계 별로 백준 온라인 문제를 풀어보는 pkg 모음
   > https://www.acmicpc.net/
-- step1 (입출력과 사칙연산)
+### 🕹️ step1 (입출력과 사칙연산)
 <details close>
 <summary markdown="span"><b> 🔥 step1 🔥</b></summary>
 <div markdown="1">
+  
   ![image](https://user-images.githubusercontent.com/62086216/147313407-9e4e6614-2454-4792-b34f-91729989d4d1.png)
+  
 </div>
 </details>
 
