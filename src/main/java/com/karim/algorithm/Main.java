@@ -4,28 +4,20 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int a;
-        String b;
-        int firstLine = 0, secondLine = 0, thirdLine = 0, result = 0;
+        int a,b;
         Scanner scan = new Scanner(System.in);
         a = scan.nextInt();
-        b = scan.next();
+        b = scan.nextInt();
 
-        if (a > 99 && b.length() > 2 ){
-            firstLine = a * Integer.parseInt(String.valueOf(b.charAt(2)));
-            secondLine = a * (b.charAt(1) -'0');
-            thirdLine =  a * (b.charAt(0) -'0');
-
-            result = a *  Integer.parseInt(b);
-        } else {
-            System.out.println("a , b 둘 다 3자리를 써주세요");
+        b = b - 45;
+        if (b < 0){
+            b = 60 + b;
+            a = a - 1;
+            if (a < 0){
+                a = 23;
+            }
         }
 
-        scan.close();
-
-        System.out.println(firstLine);
-        System.out.println(secondLine);
-        System.out.println(thirdLine);
-        System.out.println(result);
+        System.out.println(a + " " + b);
     }
 }

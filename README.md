@@ -22,3 +22,11 @@
 </div>
 </details>
 
+### 🕹️ step2 (	if문)
+<details close>
+<summary markdown="span"><b> 🔥 step2 🔥</b></summary>
+<div markdown="1">
+
+</div>
+</details>
+
