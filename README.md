@@ -26,6 +26,8 @@
 <details close>
 <summary markdown="span"><b> 🔥 step2 🔥</b></summary>
 <div markdown="1">
+  
+![image](https://user-images.githubusercontent.com/62086216/147443798-46a8b956-593e-43db-a2e3-efd12ea82e58.png)
 
 </div>
 </details>
