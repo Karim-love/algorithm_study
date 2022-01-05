@@ -1,23 +1,30 @@
 package com.karim.algorithm;
 
-import java.util.Scanner;
+import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
-        int a,b;
-        Scanner scan = new Scanner(System.in);
-        a = scan.nextInt();
-        b = scan.nextInt();
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+            int a = Integer.parseInt(bufferedReader.readLine());
 
-        b = b - 45;
-        if (b < 0){
-            b = 60 + b;
-            a = a - 1;
-            if (a < 0){
-                a = 23;
+            for (int i=1; i < a+1; i++){
+                String b = bufferedReader.readLine();
+                int blank = b.indexOf(" ");
+
+                int c = Integer.parseInt(b.substring(0,blank));
+                int d = Integer.parseInt(b.substring(blank+1));
+
+                bufferedWriter.write(c+d+"\n");
             }
-        }
 
-        System.out.println(a + " " + b);
+            bufferedWriter.flush();
+
+            bufferedWriter.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
