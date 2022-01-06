@@ -31,3 +31,12 @@
 </div>
 </details>
 
+
+<details close>
+<summary markdown="span"><b> 🕹️ step3 (for문) </b></summary>
+<div markdown="1">
+
+![img.png](img.png)![image](https://user-images.githubusercontent.com/62086216/147443798-46a8b956-593e-43db-a2e3-efd12ea82e58.png)
+
+</div>
+</details>

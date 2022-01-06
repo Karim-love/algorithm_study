@@ -1,29 +1,33 @@
 package com.karim.algorithm;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
         try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-            BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
-            int a = Integer.parseInt(bufferedReader.readLine());
+            //첫 번째 줄 입력
+            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine(), " ");
+            int count = Integer.parseInt(stringTokenizer.nextToken());
+            int x = Integer.parseInt(stringTokenizer.nextToken());
 
-            for (int i=1; i < a+1; i++){
-                String b = bufferedReader.readLine();
-                int blank = b.indexOf(" ");
-
-                int c = Integer.parseInt(b.substring(0,blank));
-                int d = Integer.parseInt(b.substring(blank+1));
-
-                bufferedWriter.write(c+d+"\n");
+            //두 번째 줄 입력
+            stringTokenizer = new StringTokenizer(bufferedReader.readLine(), " ");
+            for (int i=0; i<count; i++){
+                int output = Integer.parseInt(stringTokenizer.nextToken());
+                if (output < x){
+                    bufferedWriter.write(output+" ");
+                }
             }
 
             bufferedWriter.flush();
-
             bufferedWriter.close();
-
-        } catch (IOException e) {
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

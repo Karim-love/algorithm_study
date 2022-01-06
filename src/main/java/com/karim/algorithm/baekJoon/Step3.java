@@ -8,6 +8,7 @@ package com.karim.algorithm.baekJoon;
 
 import java.io.*;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 /**
  * NOTE : for문
@@ -84,6 +85,140 @@ public class Step3 {
             bufferedWriter.close();
 
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * NOTE : 1부터 N까지 출력하는 문제
+     */
+    public void printN(){
+        int a;
+        Scanner scan = new Scanner(System.in);
+        a = scan.nextInt();
+        for (int i=1; i<=a; i++){
+            System.out.println(i);
+        }
+    }
+
+    /**
+     * NOTE : 제문 는하력출 지까N 터부1
+     */
+    public void printNN(){
+        int a;
+        Scanner scan = new Scanner(System.in);
+        a = scan.nextInt();
+        for (int i=a; i>=1; i--){
+            System.out.println(i);
+        }
+    }
+
+    /**
+     * NOTE : A+B를 조금 더 아름답게 출력하는 문제
+     */
+    public void printPrettyAB(){
+        int count, result;
+        int a, b;
+        Scanner scan = new Scanner(System.in);
+        count = scan.nextInt();
+
+        for (int i=1; i<=count; i++){
+            a = scan.nextInt();
+            b = scan.nextInt();
+            result = a+b;
+            System.out.println("Case #"+i+": "+ result);
+        }
+    }
+
+    /**
+     * NOTE : A+B를 조금 더 아름답게 출력하는 문제
+     */
+    public void printUpgradePrettyAB(){
+        int count, result;
+        int a, b;
+        Scanner scan = new Scanner(System.in);
+        count = scan.nextInt();
+
+        for (int i=1; i<=count; i++){
+            a = scan.nextInt();
+            b = scan.nextInt();
+            result = a+b;
+            System.out.println("Case #"+i+": "+ a+" + "+ b +" = " + result);
+        }
+    }
+
+    /**
+     * NOTE : 별을 찍는 문제 1
+     */
+    public void printStar(){
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+        try {
+            int count = Integer.parseInt(bufferedReader.readLine());
+
+            for (int i=1; i<=count; i++){
+                for (int j=1; j<=i; j++){
+                    bufferedWriter.write("*");
+                }
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * NOTE : 별을 찍는 문제 2
+     */
+    public void printStar2(){
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+        try {
+            int count = Integer.parseInt(bufferedReader.readLine());
+
+            for (int i=1; i<=count; i++){
+                for (int k=1; k<=count-i; k++){
+                    bufferedWriter.write(" ");
+                }
+                for (int j=1; j<=i; j++){
+                    bufferedWriter.write("*");
+                }
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * NOTE : X보다 작은 수
+     * StringTokenizer 사용
+     */
+    public void printUnderX(){
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+        try {
+            //첫 번째 줄 입력
+            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine(), " ");
+            int count = Integer.parseInt(stringTokenizer.nextToken());
+            int x = Integer.parseInt(stringTokenizer.nextToken());
+
+            //두 번째 줄 입력
+            stringTokenizer = new StringTokenizer(bufferedReader.readLine(), " ");
+            for (int i=0; i<count; i++){
+                int output = Integer.parseInt(stringTokenizer.nextToken());
+                if (output < x){
+                    bufferedWriter.write(output+" ");
+                }
+            }
+
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
