@@ -40,3 +40,12 @@
 
 </div>
 </details>
+
+<details close>
+<summary markdown="span"><b> 🕹️ step4 (while문) </b></summary>
+<div markdown="1">
+
+![img_1.png](img_1.png)
+
+</div>
+</details>
