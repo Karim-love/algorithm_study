@@ -6,22 +6,28 @@ public class Main {
     public static void main(String[] args) {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
-
         try {
-            int a = Integer.parseInt(bufferedReader.readLine());
-            int copy = a;
-            int cycleCount = 0;
-            while (true){
-                a = (a % 10)*10 + (((a / 10) + (a % 10)) > 9 ? (((a / 10) + (a % 10)) % 10) : ((a / 10) + (a % 10)));
-
-                cycleCount++;
-                if (copy == a){
-                    bufferedWriter.write(cycleCount + "\n");
-                    break;
+            int count = Integer.parseInt(bufferedReader.readLine());
+            for (int i=0; i<count; i++){
+                String input = bufferedReader.readLine();
+                int plus=0;
+                int score=0;
+                int j = 0;
+                while (true){
+                    if (input.charAt(j) == 'O'){
+                        plus++;
+                        score = score + plus;
+                    }else {
+                        plus = 0;
+                    }
+                    j++;
+                    if (j == input.length()){
+                        break;
+                    }
                 }
+                bufferedWriter.write( score + "\n");
             }
             bufferedWriter.flush();
-            bufferedWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
