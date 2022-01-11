@@ -49,3 +49,12 @@
 
 </div>
 </details>
+
+<details close>
+<summary markdown="span"><b> 🕹️ step5 (	1차원 배열) </b></summary>
+<div markdown="1">
+
+![img_2.png](img_2.png)
+
+</div>
+</details>

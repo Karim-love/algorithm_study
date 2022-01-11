@@ -8,10 +8,7 @@ package com.karim.algorithm.baekJoon;
 
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.StringTokenizer;
+import java.util.*;
 
 /**
  * NOTE : 1차원 배열
@@ -171,6 +168,42 @@ public class Step5 {
                     }
                 }
                 bufferedWriter.write( score + "\n");
+            }
+            bufferedWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * NOTE : 평균은 넘겠지 => 과연 그럴까요?
+     */
+    public void getAvg(){
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer stringTokenizer;
+        try {
+            int count = Integer.parseInt(bufferedReader.readLine());
+            for (int i=0; i<count; i++){
+                stringTokenizer = new StringTokenizer(bufferedReader.readLine(), " ");
+                double plusScore=0;
+                List<Double> score = new ArrayList<Double>();
+
+                int deepCount = Integer.parseInt(stringTokenizer.nextToken());
+                for (int j=0; j<deepCount; j++){
+                    double tmp = Double.parseDouble(stringTokenizer.nextToken());
+                    score.add(tmp);
+                    plusScore = plusScore + tmp;
+                }
+
+                double deepAvg = 0;
+                for (double a : score){
+                    if (a > (plusScore/deepCount)){
+                        deepAvg++;
+                    }
+                }
+
+                bufferedWriter.write( String.format("%.3f", deepAvg/deepCount * 100) +"%"+ "\n");
             }
             bufferedWriter.flush();
         } catch (IOException e) {
