@@ -1,6 +1,8 @@
 package com.karim.algorithm;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,36 +10,34 @@ public class Main {
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
 
         try {
-            int input = Integer.parseInt(bufferedReader.readLine());
+            int count = Integer.parseInt(bufferedReader.readLine());
 
-            bufferedWriter.write(arithmeticSequenceCount(input) + "\n");
+            int groupWordCount = count;
+            for (int i=0; i<count; i++){
+                String input = bufferedReader.readLine();
+                List<Character> groupWordList = new ArrayList<>();
+                for (int j=0; j<input.length(); j++){
+                    // 그룹에 있는지 확인
+                    // 1. 있으면 연속으로 중복되었거나, 연속하지 않게 중복되어있을 경우
+                    if (groupWordList.contains(input.charAt(j))){
+                        // 중복되었는지 확인
+                        // 1. 중복되었으면 괜찬!
+                        // 2. 아니면 그룹에서 팽
+                        if (!groupWordList.get(j-1).equals(input.charAt(j))){
+                            // 팽 당했으므로 전체에서 팽한거 빼고 반복문 나가기 (더이상 볼 것도 없음)
+                            groupWordCount--;
+                            break;
+                        }
+                    }
+                    groupWordList.add(input.charAt(j));
+                }
+            }
+
+            bufferedWriter.write(groupWordCount + "\n");
             bufferedWriter.flush();
-
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-    }
-
-    public static int arithmeticSequenceCount(int number){
-        int count = 0;
-
-        if (number < 100){
-            count = number;
-        }else {
-            count = 99;
-            for (int i=100; i<=number; i++){
-                String tmp = String.valueOf(i);
-                int a = tmp.charAt(0)-'0';
-                int b = tmp.charAt(1)-'0';
-                int c = tmp.charAt(2)-'0';
-                if ((b-a)==(c-b)){
-                    count++;
-                }
-            }
-        }
-        return count;
     }
 }

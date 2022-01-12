@@ -68,3 +68,11 @@
 </div>
 </details>
 
+<details close>
+<summary markdown="span"><b> 🕹️ step7 (문자열) </b></summary>
+<div markdown="1">
+
+![img_4.png](img_4.png) 
+
+</div>
+</details>
