@@ -30,6 +30,7 @@ public class Step6 {
     /**
      * NOTE : 셀프 넘버
      * => 함수 d를 정의하여 문제를 해결해 봅시다.
+     * NOTE : 셀프넘버가 아닌걸 찾는거니깐 셀프넘버인걸 구하고 전체에서 뺴자!
      */
     public void getSelfNumber(){
 
