@@ -30,7 +30,7 @@ public class Step6 {
     /**
      * NOTE : 셀프 넘버
      * => 함수 d를 정의하여 문제를 해결해 봅시다.
-     * NOTE : 셀프넘버가 아닌걸 찾는거니깐 셀프넘버인걸 구하고 전체에서 뺴자!
+     * COMMAND : 셀프넘버가 아닌걸 찾는거니깐 셀프넘버인걸 구하고 전체에서 뺴자!
      */
     public void getSelfNumber(){
 
@@ -70,7 +70,7 @@ public class Step6 {
     /**
      * NOTE : 한수
      * => X가 한수인지 판별하는 함수를 정의하여 문제를 해결해 봅시다.
-     * NOTE : 한수를 이해하느라 너무 오래 걸렸다..ㅠㅠ
+     * COMMAND : 한수를 이해하느라 너무 오래 걸렸다..ㅠㅠ
      */
     public void calcHansu(){
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));

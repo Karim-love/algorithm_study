@@ -60,7 +60,7 @@ public class Step7 {
     /**
      * NOTE : 알파벳 찾기
      * => 한 단어에서 각 알파벳이 처음 등장하는 위치를 찾는 문제
-     * NOTE : 중복에서 체크에서 오래 걸렸다!!
+     * COMMAND : 중복에서 체크에서 오래 걸렸다!!
      */
     public void findAlphabet(){
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -130,7 +130,7 @@ public class Step7 {
     /**
      * NOTE : 단어 공부
      * => 주어진 단어에서 가장 많이 사용된 알파벳을 출력하는 문제
-     * NOTE : 진짜 어려웠다.. ㅜㅜ 맵 벨류의 정렬과, 소문자를 대문자로 바꾸는거는 구글링했다..
+     * COMMAND : 진짜 어려웠다.. ㅜㅜ 맵 벨류의 정렬과, 소문자를 대문자로 바꾸는거는 구글링했다..
      */
     public void studyWord(){
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));

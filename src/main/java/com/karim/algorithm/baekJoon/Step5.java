@@ -116,7 +116,7 @@ public class Step5 {
 
     /**
      * NOTE : 평균을 조작하는 문제
-     * NOTE : 나누기 할 땐 double!
+     * COMMAND : 나누기 할 땐 double!
      */
     public void calcScore(){
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));

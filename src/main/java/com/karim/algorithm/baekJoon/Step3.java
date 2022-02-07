@@ -196,7 +196,7 @@ public class Step3 {
 
     /**
      * NOTE : X보다 작은 수
-     * StringTokenizer 사용
+     * COMMAND : StringTokenizer 사용
      */
     public void printUnderX(){
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
