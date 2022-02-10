@@ -1,6 +1,8 @@
 package com.karim.algorithm;
 
 import java.io.*;
+import java.math.BigDecimal;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,40 +10,17 @@ public class Main {
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
 
         try {
-            int input = Integer.parseInt(bufferedReader.readLine());
-            int sumResult = 0;
-            int line = 0; // 라인수가 될것이다.
+            StringTokenizer stringTokenizer = new StringTokenizer(bufferedReader.readLine(), " ");
 
-            //일단 몇 번째 줄에 있는지 구하기
-            for (int i=1; i < input+1; i++){
-                sumResult = sumResult + i;
-                if (sumResult >= input){
-                    line = i;
-                    break;
-                }
-            }
+            BigDecimal A = new BigDecimal(stringTokenizer.nextToken());
+            BigDecimal B = new BigDecimal(stringTokenizer.nextToken());
 
-            // 그 열 분수 구하기
-            String[] fraction = new String[line];
-            // 쩍수면
-            if (line%2 == 0){
-                for (int i=0; i<line; i++){
-                    fraction[i] = (i+1)+"/"+(line-i);
-                }
-            }else {
-                for (int i=0; i<line; i++){
-                    fraction[i] = (line-i)+"/"+(i+1);
-                }
-            }
-
-            // 해당 번 째 구하기
-            int pick = input - (sumResult - line) - 1;
-
-            bufferedWriter.write( fraction[pick] + "\n");
+            bufferedWriter.write( A.add(B) +  "\n");
             bufferedWriter.flush();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 }
+
+
