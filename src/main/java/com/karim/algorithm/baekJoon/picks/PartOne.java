@@ -2,6 +2,7 @@ package com.karim.algorithm.baekJoon.picks;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -92,6 +93,45 @@ public class PartOne {
             bufferedWriter.flush();
 
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * NOTE : 2693 N번째 큰수
+     * COMMAND :
+     */
+    public void getMaxN() {
+
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer stringTokenizer;
+
+        try {
+
+            int count = Integer.parseInt(bufferedReader.readLine());
+
+            for (int i = 0; i < count; i++) {
+
+                stringTokenizer = new StringTokenizer(bufferedReader.readLine(), " ");
+                List<Integer> list = new ArrayList<>();
+
+                while (true) {
+
+                    list.add(Integer.parseInt(stringTokenizer.nextToken()));
+
+                    if (!stringTokenizer.hasMoreTokens()) {
+                        break;
+                    }
+                }
+
+                Collections.sort(list, Collections.reverseOrder());
+                bufferedWriter.write(list.get(2) + "\n");
+            }
+
+            bufferedWriter.flush();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
