@@ -1,4 +1,4 @@
-package com.karim.algorithm.baekJoon;
+package com.karim.algorithm.baekJoon.step;
 
 /**
  * Created by sblim

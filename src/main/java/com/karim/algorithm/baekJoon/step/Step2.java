@@ -1,4 +1,4 @@
-package com.karim.algorithm.baekJoon;
+package com.karim.algorithm.baekJoon.step;
 
 import java.util.Scanner;
 
