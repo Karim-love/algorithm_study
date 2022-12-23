@@ -11,7 +11,7 @@ public class PartOne {
      * NOTE : 2501 약수 구하기
      * COMMAND : 백준 오랜만인가 보다 ㅜㅜ import까지 넣어야 한다는 걸 잊고 있었다니!!!
      */
-    public void getDivisor(){
+    public void getDivisor() {
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -26,18 +26,18 @@ public class PartOne {
             List<Integer> list = new ArrayList<>();
             int result;
 
-            for ( int i = 1; i <= a + 1; i++ ){
+            for (int i = 1; i <= a + 1; i++) {
 
-                if ( a % i == 0 ){
+                if (a % i == 0) {
 
-                    list.add( i );
+                    list.add(i);
                 }
             }
 
-            if ( list.size() >= b ){
+            if (list.size() >= b) {
 
-                result = list.get( b - 1 );
-            }else {
+                result = list.get(b - 1);
+            } else {
 
                 result = 0;
             }
@@ -54,7 +54,7 @@ public class PartOne {
      * NOTE : 3460 이진수
      * COMMAND : 나는 디버깅이 좋아
      */
-    public void getBinaryNumber(){
+    public void getBinaryNumber() {
 
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
@@ -63,31 +63,31 @@ public class PartOne {
 
             int count = Integer.parseInt(bufferedReader.readLine());
 
-            for ( int i = 0; i < count; i++ ){
+            for (int i = 0; i < count; i++) {
 
                 int a = Integer.parseInt(bufferedReader.readLine());
                 List<Integer> resultList = new ArrayList<>();
                 StringBuilder result = new StringBuilder();
 
                 // if 13 이면 1 0 1 1 로 이진수와 반대로 list에 들어감
-                while ( true ){
+                while (true) {
 
-                    resultList.add( a % 2 );
+                    resultList.add(a % 2);
 
                     a = a / 2;
 
-                    if ( a < 1 ){
+                    if (a < 1) {
                         break;
                     }
                 }
 
-                for (int k = 0; k < resultList.size(); k ++ ){
+                for (int k = 0; k < resultList.size(); k++) {
 
-                    if ( resultList.get( k ) == 1 ) {
+                    if (resultList.get(k) == 1) {
                         result.append(k).append(" ");
                     }
                 }
-                bufferedWriter.write( result.substring( 0, result.length()-1 ) + "\n");
+                bufferedWriter.write(result.substring(0, result.length() - 1) + "\n");
             }
 
             bufferedWriter.flush();
@@ -136,4 +136,54 @@ public class PartOne {
         }
     }
 
+    /**
+     * NOTE : 1978 소수 찾기
+     * COMMAND : 쉬운문제인데 홀이 있었댜..
+     */
+    public void getPrimeNumber() {
+
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer stringTokenizer;
+
+        try {
+
+            int count = Integer.parseInt(bufferedReader.readLine());
+            stringTokenizer = new StringTokenizer(bufferedReader.readLine(), " ");
+            int primeNumberCount = 0;
+
+            for ( int i = 0; i < count; i++ ){
+                int inputData = Integer.parseInt(stringTokenizer.nextToken());
+                boolean primeSignal = true;
+
+                if ( inputData == 1 ){ // 은 소수가 아니라서 체크 후 다음 숫자 확인
+                    continue;
+                }
+
+                for ( int j = 2; j < inputData; j++ ){
+                    if ( (inputData % j == 0) ){ // inputData 보다 작은 수를 다 나눠서 나머지가 0이라면 소수 아님
+                        primeSignal = false;
+                    }
+                }
+
+                if ( primeSignal )
+                    primeNumberCount++;
+
+            }
+
+            bufferedWriter.write( primeNumberCount + "\n");
+            bufferedWriter.flush();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * NOTE : 1292 쉽게 푸는 문제
+     * COMMAND :
+     */
+    public void findEasyProblems() {
+
+    }
 }
