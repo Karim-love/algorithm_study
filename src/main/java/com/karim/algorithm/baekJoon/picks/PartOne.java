@@ -185,5 +185,94 @@ public class PartOne {
      */
     public void findEasyProblems() {
 
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer stringTokenizer;
+
+        try {
+            stringTokenizer = new StringTokenizer(bufferedReader.readLine(), " ");
+            int a = Integer.parseInt(stringTokenizer.nextToken());
+            int b = Integer.parseInt(stringTokenizer.nextToken());
+
+            List<Integer> list = new ArrayList<>();
+            int result = 0;
+
+            loop: // 이중 for 문 나가는 방법
+            for ( int i = 1; i <= b ; i++ ){
+
+                for ( int j = 1; j < i+1; j++ ){
+
+                    list.add(i);
+
+                    if ( list.size() == b )
+                        break loop;
+                }
+            }
+
+            for ( int k = a - 1; k < b; k++ ){
+
+                result += list.get( k );
+            }
+
+            bufferedWriter.write( result + "\n" );
+            bufferedWriter.flush();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * NOTE : 2581 소수
+     * COMMAND :
+     */
+    public void betweenPrimeNumber(){
+
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        try {
+            int M = Integer.parseInt(bufferedReader.readLine());
+            int N = Integer.parseInt(bufferedReader.readLine());
+
+            List<Integer> list = new ArrayList<>();
+            int result = 0;
+
+            for ( int i = M; i <= N; i++ ){
+                boolean primeNumberSignal = true;
+
+                if ( i == 1 ){
+                    continue;
+                }
+
+                for ( int j = 2; j < i; j++ ){
+                    if ( i % j == 0 )
+                        primeNumberSignal = false;
+                }
+
+                if ( primeNumberSignal )
+                    list.add( i );
+
+            }
+
+            if ( list.size() == 0 ){
+
+                bufferedWriter.write(-1 + "\n");
+
+            }else {
+
+                for (Integer integer : list) {
+
+                    result += integer;
+                }
+
+                bufferedWriter.write(result + "\n" + list.get(0) );
+            }
+
+            bufferedWriter.flush();
+
+        }catch ( Exception e ){
+
+            e.printStackTrace();
+        }
     }
 }
