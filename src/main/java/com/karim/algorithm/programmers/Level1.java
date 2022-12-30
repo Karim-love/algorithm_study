@@ -138,7 +138,7 @@ public class Level1 {
                     if ( i / j == j ){ // 해당 값의 제곱근 이면 한번만 카운트
 
                         count++;
-                    }else { // 
+                    }else { //
 
                         count+=2;
                     }
@@ -160,13 +160,69 @@ public class Level1 {
 
     /**
      * NOTE : 과일 장수
-     * COMMAND :
+     * COMMAND : 문제 이해가 어려웠당
      * TIP :
      */
     public int method6( int k, int m, int[] score ) {
 
         int answer = 0;
 
+        // 내림 차순 정렬
+        Integer[] reverseScore = Arrays.stream( score ).boxed().toArray(Integer[]::new);
+        Arrays.sort( reverseScore, Collections.reverseOrder() );
+
+        for ( int i = m-1; i < reverseScore.length; i+=m ) { // 한 상자에 담긴 사과 개수 만큼 증가
+
+            if (reverseScore[i] > k) { // 만약 점수가 최대 점수 k 보다 크면 k로 바꿔준다.
+
+                reverseScore[i] = k;
+            }
+
+            // 최저 점수 * 한 상자에 담긴 사과 개수
+            answer += ( reverseScore[i] * m );
+        }
+
+        return answer;
+    }
+
+    /**
+     * NOTE : 푸드 파이트 대회
+     * COMMAND :
+     * TIP :
+     */
+    public String method7( int[] food ) {
+        String answer = "";
+
+        Deque<Integer> deque = new ArrayDeque<>();
+
+        // 처음에 물을 넣는다
+        deque.add( 0 );
+
+        for ( int i = food.length -1 ; i > 0; i-- ){ // 작은 숫자 부터 먹을려면, 큰 숫자 부터 넣어야 하니깐 배열 크기 부터
+
+            // 몫 값으로 넣는다 ( 나머지는 버려질 음식, 0 이면 넣지 않는다.)
+            for ( int j = 0; j < food[i] / 2; j++ ) { // 나눈 갯수 만큼 넣기
+
+                deque.addFirst( i );
+                deque.addLast( i );
+            }
+        }
+
+        for (Integer integer : deque) {
+
+            answer += integer;
+        }
+
+        return answer;
+    }
+
+    /**
+     * NOTE : 푸드 햄버거 만들기 대회
+     * COMMAND :
+     * TIP :
+     */
+    public int method8( int[] ingredient ) {
+        int answer = 0;
         return answer;
     }
 }
