@@ -218,11 +218,91 @@ public class Level1 {
 
     /**
      * NOTE : 푸드 햄버거 만들기 대회
-     * COMMAND :
+     * COMMAND : 처음에는 문자열로 풀다가 시간 초과 때매 집중하다 stack 으로 품...
      * TIP :
      */
     public int method8( int[] ingredient ) {
         int answer = 0;
+
+        Stack<Integer> stack = new Stack<>();
+        for ( int i = 0; i < ingredient.length; i++ ){
+
+            stack.push( ingredient[i] );
+
+            if (  stack.size() > 3 ){ // 넣은 스텍 사이즈가 4 이상일 경우부터 체크
+
+                int stackSize = stack.size();
+                // 마지막 스텍 인덱스 부터 확인
+                if ( stack.get( stackSize - 1 )  == 1 &&
+                        stack.get( stackSize - 2 ) == 3  &&
+                        stack.get( stackSize - 3 ) == 2  &&
+                        stack.get( stackSize - 4 ) == 1 ){
+
+                    // 다 맞으면 꺼냄
+                    int j = 0;
+                    while (j < 4){
+
+                        stack.pop();
+                        j ++;
+                    }
+
+                    // 햄버거 완성이니 count 올림
+                    answer ++;
+
+                }
+            }
+        }
+        return answer;
+    }
+
+    /**
+     * NOTE : 옹알이 (2)
+     * COMMAND :
+     * TIP :
+     */
+    public int method9( String[] babbling ) {
+        int answer = 0;
+
+        String[] matches = {"aya", "ye", "woo", "ma"};
+
+        for (String s : babbling) { //ayaye
+            String signal = " ";
+
+            int flag = 0;
+            while ( true ){
+                for ( int i = 0; i< 4; i++ ){
+
+                    if ( s.startsWith( matches[i] ) ){
+
+                        if ( signal.charAt( signal.length() - 1 ) == (char)(i +'0') ){ // 이전에 동일 값인지 체크
+
+                            flag ++;
+                        }else {
+
+                            s = s.replaceFirst(matches[ i ], ""); // 처음 껏만 지우기
+                            signal += i; // 해당 값 시그널에 넣기
+                        }
+                    }else {
+
+                        flag ++;
+                    }
+                }
+
+                if ( flag > 3){
+
+                    break;
+                }
+
+                if ( s.length() == 0){
+
+                    answer++;
+                    break;
+                }
+
+                flag = 0; // 초기화
+            }
+        }
+
         return answer;
     }
 }
