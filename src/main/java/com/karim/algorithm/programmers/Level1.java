@@ -257,7 +257,7 @@ public class Level1 {
 
     /**
      * NOTE : 옹알이 (2)
-     * COMMAND :
+     * COMMAND : 반례가 너무 많았다..
      * TIP :
      */
     public int method9( String[] babbling ) {
@@ -304,5 +304,121 @@ public class Level1 {
         }
 
         return answer;
+    }
+
+    /**
+     * NOTE : 콜라 문제
+     * COMMAND :
+     * TIP :
+     */
+    public int method10(int a, int b, int n) {
+        int answer = 0;
+
+        int mod = 0;
+        while ( true ){
+
+            mod = n % a;
+            n = ( ( n / a ) * b );
+            answer += n;
+            n += mod; // 다음 계산을 위해 나머지 더하기
+
+            if ( n < a ){
+
+                break;
+            }
+        }
+
+        return answer;
+    }
+
+    /**
+     * NOTE : 삼총사
+     * COMMAND :
+     * TIP :
+     */
+    public int method11( int[] number ) {
+        int answer = 0;
+
+        for ( int i = 0; i < number.length; i++ ){
+
+            for ( int j = 0; j <number.length; j++){
+
+                if (i < j){ // 같은건 빼고 ( j 가 더 커야함 )
+
+                    for ( int k = 0; k < number.length; k++ ){
+
+                        if (i != k && j < k){ // 다 같은건 빼고 ( k가 더 커야함 )
+
+                            if ( number[i] + number[j] + number[k] == 0 ){
+
+                                answer++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return answer;
+    }
+
+    /**
+     * NOTE : 숫자 짝꿍
+     * COMMAND : 시간 초과... 터무니 없었다
+     * TIP : 이중 for문 보단 숫자는 0부터 9까지니 그거에 갯수로 구하는게 시간 초과가 안난다..
+     */
+    public String method12( String X, String Y ) {
+        StringBuffer answer = new StringBuffer();
+        String[] x = X.split("");
+        String[] y = Y.split("");
+        int[] count = new int[10];
+        int[] count2 = new int[10];
+        List<Integer> a = new ArrayList<>();
+
+        for ( int i = 0; i < 10; i ++ ){
+
+            for (String s : x) {
+
+                if ( Integer.toString(i).equals(s)){
+                    count[i]++;
+                }
+            }
+        }
+
+        for ( int i = 0; i < 10; i ++ ){
+
+            for (String s : y) {
+
+                if ( Integer.toString(i).equals(s)){
+                    count2[i]++;
+                }
+            }
+        }
+
+        for ( int i = 0; i < 10; i ++ ){
+
+            if ( count[i] > 0 && count[i] > 0 ){ // 카운트가 둘 다 0보다 크면 있다는거니
+
+                if ( count[i] > count2[i] ){
+
+                    for ( int j = 0; j < count2[i]; j++){
+                        a.add(i);
+                    }
+                }else {
+
+                    for ( int j = 0; j < count[i]; j++){
+                        a.add(i);
+                    }
+                }
+            }
+        }
+
+        a.sort(Collections.reverseOrder());
+
+        for (Integer integer : a) {
+            answer.append(integer);
+        }
+
+        return a.size() == 0 ? "-1" : a.get(0) == 0 ?  "0" : answer.toString();
     }
 }
