@@ -421,4 +421,68 @@ public class Level1 {
 
         return a.size() == 0 ? "-1" : a.get(0) == 0 ?  "0" : answer.toString();
     }
+
+    /**
+     * NOTE : 성격 유형 검사하기
+     * COMMAND : 간단한데 더럽당...
+     * TIP :
+     */
+    public String method13(String[] survey, int[] choices) {
+        StringBuilder answer = new StringBuilder();
+        String[] a;
+        String[] initMbti = {"R","T","C","F","J","M","A","N"};
+        Map< String, Integer > countMap = new HashMap<>();
+
+        for (int i = 0; i < survey.length; i++ ){
+
+            a = survey[i].split("");
+            if ( choices[i] < 4 ){
+
+                if ( countMap.get( a[ 0 ] ) != null ){
+
+                    countMap.put(  a[ 0 ]  , countMap.get(  a[ 0 ]  ) + getScore( choices[i] ) );
+                }else {
+
+                    countMap.put(  a[ 0 ] , getScore( choices[i] ) );
+                }
+            }else {
+
+                if ( countMap.get( a[ 1 ] ) != null ){
+
+                    countMap.put(  a[ 1 ]  , countMap.get(  a[ 1 ]  ) + getScore( choices[i] ) );
+                }else {
+
+                    countMap.put(  a[ 1 ] , getScore( choices[i] ) );
+                }
+            }
+        }
+
+        // mbti 만들기
+        for ( int i = 0; i < initMbti.length; i+=2 ){
+
+            int k = countMap.get( initMbti[i + 1] ) == null ? 0 : countMap.get( initMbti[i + 1] );
+            int g = countMap.get( initMbti[i] ) == null ? 0 : countMap.get( initMbti[i] );
+            if ( k > g ){
+
+                answer.append(initMbti[i + 1]);
+            }else {
+
+                answer.append(initMbti[i]);
+            }
+        }
+        return answer.toString();
+    }
+
+    public int getScore( int choice ){
+        int score = 0;
+        if( choice == 1 || choice == 7 ){
+            score = 3;
+        }else if ( choice == 2 || choice == 6 ){
+            score = 2;
+        }else if ( choice == 3 || choice == 5 ){
+            score = 1;
+        }
+
+        return score;
+    }
 }
