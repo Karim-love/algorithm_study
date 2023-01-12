@@ -1,8 +1,9 @@
 package com.karim.algorithm.programmers;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
-public class Level1 {
+public class Level1_1_15 {
 
     /**
      * NOTE : 크기가 작은 부분문자열
@@ -478,5 +479,148 @@ public class Level1 {
         }
 
         return score;
+    }
+
+    /**
+     * NOTE : 신고 결과 받기
+     * COMMAND :
+     * TIP :
+     */
+    public int[] method14(String[] id_list, String[] report, int k) {
+        int[] answer = new int[ id_list.length ];
+        Map<String, List<String>> idListMap = new HashMap<>();
+        Map<String, Integer> reportMap = new HashMap<>();
+        int count = 0;
+
+        for (String s : report) {
+
+            String[] ss = s.split(" ");
+            count = 0; // 초기화
+
+            List<String> checkList = idListMap.get( ss[0] );
+            if ( checkList != null ){ // 해당 사용자가 두 번째 신고할 경우
+
+                // 한 사람당 중복 없이 한 사람만 신고가 가능하니 이 부분 체크
+                if ( !checkList.contains( ss[1] ) ){ // 없으면 넣고 카운트
+                    
+                    checkList.add( ss[1] );
+                    idListMap.put( ss[0], checkList );
+                    count = 1;
+                }
+            }else {
+                // 처음 신고할 경우
+                List< String > list = new ArrayList<>();
+                list.add( ss[1] );
+                idListMap.put( ss[0], list );
+                count = 1;
+            }
+
+            // 신고 카운트
+            if ( reportMap.get( ss[1] ) != null ){ // 이전 신고 기록 있을 때
+
+                reportMap.put( ss[1], reportMap.get( ss[1] ) + count );
+            }else { // 이전 신고 기록 없을 때
+
+                reportMap.put( ss[1], count );
+            }
+        }
+
+        // 확인
+        for (int i = 0; i < id_list.length; i++ ) {
+
+            // 해당에서 가져오고 들어있는 얘들이 카운트가 k보다 높으면 카운트
+            if ( idListMap.get( id_list[i] ) != null ){
+
+                for ( String check : idListMap.get( id_list[i] ) ){
+
+                    if ( reportMap.get( check ) >= k ){
+
+                        answer[i]++;
+                    }
+                }
+            }else {
+
+                answer[i] = 0;
+            }
+        }
+
+        return answer;
+    }
+
+    /**
+     * NOTE : 나머지가 1이 되는 수 찾기
+     * COMMAND :
+     * TIP :
+     */
+    public int method15(int n) {
+        int answer = 0;
+
+        for ( int i = 1; i <= n; i++ ){
+
+            if ( n / i == 1 ){
+
+                return i;
+            }
+        }
+        return answer;
+    }
+
+    /**
+     * NOTE : 최소직사각형
+     * COMMAND :
+     * TIP :
+     */
+    public int method16(int[][] sizes) {
+        int answer = 1;
+        int[] answerArray = {0,0}; //초기값
+        int tmp = 0;
+
+        for (int[] size : sizes) {
+
+            // x보다 y가 클 경우 둘이 바꿔주기
+            if ( size[0] < size[1] ){
+
+                tmp = size[0];
+                size[0] = size[1];
+                size[1] = tmp;
+            }
+            if ( size[0] > answerArray[0] ){
+
+                answerArray[0] = size[0];
+            }
+            if ( size[1] > answerArray[1] ){
+
+                answerArray[1] = size[1];
+            }
+        }
+
+        for (int i : answerArray) {
+
+            answer = answer * i;
+        }
+
+        return answer;
+    }
+
+    /**
+     * NOTE : 없는 숫자 더하기
+     * COMMAND :
+     * TIP :
+     */
+    public int method15(int[] numbers) {
+        int answer = 0;
+        List<Integer> list = Arrays.stream( numbers )
+                            .boxed()
+                            .collect( Collectors.toList() );
+
+        for ( int i = 0; i < 10; i++ ){
+
+            if ( !list.contains( i ) ){
+
+                answer += i;
+            }
+        }
+
+        return answer;
     }
 }
