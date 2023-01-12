@@ -435,25 +435,19 @@ public class Level1 {
 
         for (int i = 0; i < survey.length; i++ ){
 
+            int checkFirst = 0; // 앞 mbti 에 점수를 매길 경우
             a = survey[i].split("");
-            if ( choices[i] < 4 ){
+            if ( choices[i] > 4 ){
 
-                if ( countMap.get( a[ 0 ] ) != null ){
+                checkFirst = 1; // 뒤 mbti 에 점수를 매길 경우
+            }
 
-                    countMap.put(  a[ 0 ]  , countMap.get(  a[ 0 ]  ) + getScore( choices[i] ) );
-                }else {
+            if ( countMap.get( a[ checkFirst] ) != null ){
 
-                    countMap.put(  a[ 0 ] , getScore( choices[i] ) );
-                }
+                countMap.put(  a[ checkFirst ], countMap.get( a[ checkFirst ] ) + getScore( choices[i] ) );
             }else {
 
-                if ( countMap.get( a[ 1 ] ) != null ){
-
-                    countMap.put(  a[ 1 ]  , countMap.get(  a[ 1 ]  ) + getScore( choices[i] ) );
-                }else {
-
-                    countMap.put(  a[ 1 ] , getScore( choices[i] ) );
-                }
+                countMap.put(  a[ checkFirst ], getScore( choices[i] ) );
             }
         }
 
