@@ -100,4 +100,45 @@ public class Level1_16_30 {
 
         return answer;
     }
+
+    /**
+     * NOTE : 약수의 개수와 덧셈
+     * COMMAND : 항상 말하지만 약수 = 제곱근 ( 제곱근이 0이면 홀수 ) 인데 난 왜 항상 이렇게 푸는지
+     * TIP :
+     */
+    public int method19(int left, int right) {
+        int answer = 0;
+
+        for ( int i = left; i <= right; i++ ){
+            int count = 0;
+
+            for (int j = 1; j <= i; j++) {
+
+                if ( i % j == 0) {
+
+                    count++;
+                }
+            }
+
+            if( count % 2 == 0 ){ // 갯수가 짝수면 더하고
+
+                answer += i;
+            }else { // 홀수면 뺴기
+
+                answer -= i;
+            }
+        }
+
+        return answer;
+    }
+
+    /**
+     * NOTE : 로또의 최고 순위와 최저 순위
+     * COMMAND :
+     * TIP :
+     */
+    public int[] method20(int[] lottos, int[] win_nums) {
+        int[] answer = {};
+        return answer;
+    }
 }
