@@ -138,7 +138,86 @@ public class Level1_16_30 {
      * TIP :
      */
     public int[] method20(int[] lottos, int[] win_nums) {
-        int[] answer = {};
+        int[] answer = new int[2];
+        int zero = 0;
+        int count = 0;
+
+        for (int lotto : lottos) {
+
+            if( lotto == 0 ){
+
+                zero++;
+            }else {
+
+                for (int win_num : win_nums) {
+
+                    if ( lotto == win_num ){
+
+                        count++;
+                    }
+                }
+            }
+        }
+        answer[0] = score( zero + count );
+        answer[1] = score( count );
+
+        return answer;
+    }
+
+    public static int score( int score ){
+
+        if ( score == 6 ){
+            return 1;
+        }else if ( score == 5 ){
+            return 2;
+        }else if ( score == 4 ){
+            return 3;
+        }else if ( score == 3 ){
+            return 4;
+        }else if ( score == 2 ){
+            return 5;
+        }else {
+            return 6;
+        }
+    }
+
+    /**
+     * NOTE : 폰켓몬
+     * COMMAND :
+     * TIP : set.size() > nums.length / 2 ? nums.length / 2 : set.size()
+     *       to Math.min(set.size(), nums.length / 2)
+     */
+    public int method21(int[] nums) {
+        int answer = 0;
+        Set<Integer> set = new HashSet<>();
+
+        for (int num : nums) {
+
+            set.add( num );
+        }
+
+        return Math.min(set.size(), nums.length / 2);
+    }
+
+    /**
+     * NOTE : 음양 더하기
+     * COMMAND :
+     * TIP :
+     */
+    public int method22(int[] absolutes, boolean[] signs) {
+        int answer = 0;
+
+        for ( int i = 0; i < absolutes.length; i++ ){
+
+            if ( signs[i] ){
+
+                answer = answer + absolutes[i];
+            }else {
+
+                answer = answer - absolutes[i];
+            }
+        }
+
         return answer;
     }
 }
