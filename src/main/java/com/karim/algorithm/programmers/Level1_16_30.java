@@ -220,4 +220,89 @@ public class Level1_16_30 {
 
         return answer;
     }
+
+
+    /**
+     * NOTE : 신규 아이디 추천
+     * COMMAND :
+     * TIP :
+     */
+    public String method23(String new_id) {
+        String answer = "";
+        String[] aaa = { "~","!","@","#","\\$","%","\\^","&","\\*","\\(","\\)","=","\\+","\\[","\\{","\\]","\\}",":","\\?","<",">","/","," };
+
+        // 대문자 -> 소문자
+        new_id = new_id.toLowerCase(Locale.ROOT);
+
+
+        //알파벳 소문자, 숫자, 빼기(-), 밑줄(_), 마침표(.) 문자만 사용
+        for ( String s : aaa ) {
+
+            new_id = new_id.replaceAll( s, "" );
+        }
+
+        // . 이 연속으로 사용 되면 한개로 치환
+        for ( int j = 0; j < new_id.length() -1 ; j++ ){
+
+            if ( (new_id.charAt(j) == 46) ){
+
+                int k = j;
+                while ( true ){
+                    // k+1이 마지막이거나, 아니면 다음이 .이 아니면 브레이크
+                    if ( k + 1 == new_id.length() ||( new_id.charAt( k + 1 ) != 46) ){
+
+                        break;
+                    }
+                    k++;
+                }
+
+                new_id = new_id.substring( 0, j + 1 ) + new_id.substring( k + 1);
+            }
+        }
+
+        // new_id에서 마침표(.)가 처음이나 끝에 위치한다면 제거
+        if ( new_id.length() > 0 &&  new_id.charAt( new_id.length() -1 ) == 46 ){ // 맨 문자
+
+            new_id = new_id.substring( 0, new_id.length() -1 );
+        }
+
+        if ( new_id.length() > 0 && new_id.charAt(0) ==  46 ){ // 맨 앞에
+
+            new_id = new_id.substring( 1 );
+        }
+
+        // new_id가 빈 문자열이라면, new_id에 "a"를 대입합니다.
+        if ( new_id.length() == 0 ){
+
+            new_id = "a";
+        }
+
+        //new_id의 길이가 16자 이상이면, new_id의 첫 15개의 문자를 제외한 나머지 문자들을 모두 제거합니다.
+        //만약 제거 후 마침표(.)가 new_id의 끝에 위치한다면 끝에 위치한 마침표(.) 문자를 제거합니다.
+        if ( new_id.length() >= 16 ){
+
+            new_id = new_id.substring( 0, 15 );
+
+            if ( new_id.charAt( new_id.length() -1 ) == 46 ){ // 맨 문자
+
+                new_id = new_id.substring( 0, new_id.length() - 1 );
+            }
+        }
+
+        //new_id의 길이가 2자 이하 라면, new_id의 마지막 문자를 new_id의 길이가 3이 될 때까지 반복 해서 끝에 붙입니다.
+        if ( new_id.length() <= 2 ){
+
+            String a = new_id.substring( new_id.length() -1 );
+            while ( true ){
+
+                new_id = new_id + a;
+
+                if ( new_id.length() == 3 ){
+                    break;
+                }
+            }
+        }
+
+        return new_id;
+    }
 }
