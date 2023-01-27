@@ -305,4 +305,19 @@ public class Level1_16_30 {
 
         return new_id;
     }
+
+    /**
+     * NOTE : 내적
+     * COMMAND :
+     * TIP :
+     */
+    public int method24(int[] a, int[] b) {
+        int answer = 0;
+
+        for ( int i = 0; i < a.length; i++ ){
+
+            answer += a[i] * b[i];
+        }
+        return answer;
+    }
 }
