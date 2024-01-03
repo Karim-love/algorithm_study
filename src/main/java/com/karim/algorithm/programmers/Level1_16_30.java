@@ -3,6 +3,7 @@ package com.karim.algorithm.programmers;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Level1_16_30 {
 
@@ -356,5 +357,45 @@ public class Level1_16_30 {
         }
         return answer.toString();
     }
+    
+    /**
+     * NOTE : 3진법 뒤집기
+     * COMMAND :
+     * TIP :10진법에서 3진법으로 변환은 toString을 이용하여 Integer.toString(n,3);로 변경이 가능
+     */
+    public int method26(int n) {
+        StringBuilder answer = new StringBuilder();
 
+        // 10 -> 3 및 앞뒤 반전
+        while ( n > 0 ){
+
+            answer.append( n % 3 );
+            n = n / 3;
+        }
+
+        // 3 -> 10
+        return Integer.parseInt(String.valueOf(answer),3);
+    }
+
+    /**
+     * NOTE : 두 개 뽑아서 더하기
+     * COMMAND :
+     * TIP :
+     */
+    public int[] method27(int[] numbers) {
+        List<Integer> answerList = new ArrayList<>();
+
+        for ( int i=0; i<numbers.length+1; i++ ){
+
+            for ( int j=i+1; j<numbers.length; j++ ){
+
+                answerList.add(numbers[i] + numbers[j]);
+            }
+        }
+        int[] answer = answerList.stream()
+                        .mapToInt(Integer::intValue)
+                        .toArray();
+
+        return Arrays.stream(answer).distinct().sorted().toArray();
+    }
 }
