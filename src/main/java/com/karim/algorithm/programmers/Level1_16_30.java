@@ -320,4 +320,41 @@ public class Level1_16_30 {
         }
         return answer;
     }
+
+    /**
+     * NOTE : 둘만의 암호
+     * COMMAND :
+     * TIP :
+     */
+    public String method25(String s, String skip, int index) {
+        StringBuilder answer = new StringBuilder();
+        String[] originSpelling = {"a","b","c","d","e","f","g",
+                "h","i","j","k","l","m","n",
+                "o","p","q","r","s","t","u",
+                "v","w","x","y","z"};
+        List<String> spellingList = new ArrayList<>(Arrays.asList(originSpelling));
+
+        // skip 선처리
+        for ( char c : skip.toCharArray() ){
+            spellingList.remove(c + "");
+        }
+
+        int spellingSize = spellingList.size();
+
+        int trueSize;
+        for ( char c : s.toCharArray()){
+
+            int sIndex = spellingList.indexOf(c + "") + index;
+            if ( spellingSize > sIndex ){ // 인덱스가 작으면 일반으로 넣기
+                trueSize = sIndex;
+            }else if ( spellingSize <= (sIndex - spellingSize) ){
+                trueSize = (sIndex - spellingSize) - spellingSize;
+            }else {
+                trueSize = sIndex - spellingSize;
+            }
+            answer.append(spellingList.get(trueSize));
+        }
+        return answer.toString();
+    }
+
 }
